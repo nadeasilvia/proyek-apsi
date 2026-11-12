@@ -757,44 +757,6 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="reporter_identity" class="form-label">
-                                NIM
-                                <span class="required-mark">*</span>
-                            </label>
-
-                            <input
-                                id="reporter_identity"
-                                name="reporter_identity"
-                                type="text"
-                                class="form-control"
-                                placeholder="Masukkan NIM"
-                                required
-                            >
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="reporter_phone" class="form-label">
-                                Nomor WhatsApp aktif
-                                <span class="required-mark">*</span>
-                            </label>
-
-                            <input
-                                id="reporter_phone"
-                                name="reporter_phone"
-                                type="tel"
-                                class="form-control"
-                                placeholder="08xxxxxxxxxx"
-                                autocomplete="tel"
-                                required
-                            >
-
-                            <small class="field-help">
-                                Nomor ini digunakan Satgas untuk
-                                menghubungimu terkait pengaduan.
-                            </small>
-                        </div>
-
-                        <div class="col-md-6">
                             <label for="victim_gender" class="form-label">Gender korban (opsional)</label>
                             <select id="victim_gender" name="victim_gender" class="form-select">
                                 <option value="">Pilih jika berkenan</option>
