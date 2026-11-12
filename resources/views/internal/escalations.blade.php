@@ -1,0 +1,6 @@
+@extends('layouts.internal')
+@section('title','Eskalasi Pimpinan')
+@section('heading','Eskalasi Pimpinan')
+@section('content')
+<div class="alert alert-warning">Kasus dengan tindak lanjut atau ketidakhadiran setelah SP-3 muncul di sini untuk diteruskan dan dipantau oleh Ketua Satgas. Tampilan pimpinan dibatasi pada nomor tiket, kategori, dan tahap penanganan.</div><div class="card"><div class="table-responsive"><table class="table align-middle mb-0"><thead class="table-light"><tr><th>Tiket</th><th>Kategori</th><th>Status</th><th>Ditandai</th><th>Proses</th></tr></thead><tbody>@forelse($reports as $report)<tr><td>{{ $report->ticket_number }}</td><td>{{ str_replace('_',' ',$report->incident_type) }}</td><td><span class="badge text-bg-warning">{{ str_replace('_',' ',$report->status) }}</span></td><td>{{ $report->created_at->format('d M Y') }}</td><td>@if(auth()->user()->role==='ketua_satgas')<a class="btn btn-sm btn-outline-secondary" href="{{ route('internal.case.show',$report->id) }}">Tinjau kasus</a>@else<span class="small muted">Ringkasan aman</span>@endif</td></tr>@empty<tr><td colspan="5" class="text-center muted py-4">Tidak ada kasus yang menunggu eskalasi.</td></tr>@endforelse</tbody></table></div><div class="p-3">{{ $reports->links() }}</div></div>
+@endsection

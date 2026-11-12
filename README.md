@@ -9,6 +9,32 @@
 
 ## About Laravel
 
+## Portal internal Satgas PPKS
+
+Run database migrations with `php artisan migrate`. Internal access uses the
+four distinct roles `tim_satgas`, `ketua_satgas`, `psikolog`, and `pimpinan`.
+Create initial accounts by setting `SEED_INTERNAL_USERS=true` and the matching
+`INTERNAL_<ROLE>_EMAIL`, `INTERNAL_<ROLE>_PASSWORD`, and optional
+`INTERNAL_<ROLE>_NAME` environment values, then run `php artisan db:seed`.
+For example, use `INTERNAL_PIMPINAN_EMAIL` and `INTERNAL_PIMPINAN_PASSWORD` for
+the Pimpinan account. Do not commit credential values to source control.
+
+Open `/internal/login` for staff sign in. Public reports are submitted at
+`/pengaduan`; identity details, incident narratives, locations, and expectations
+are encrypted with the Laravel application key. Evidence files use the private
+local storage disk. Back up `APP_KEY` securely: encrypted report data cannot be
+read after that key is lost or rotated without an explicit key migration plan.
+
+The current implementation includes report intake/tracking, role-gated status
+updates, role-specific case details, Pimpinan monitoring and sanitized CSV
+export, Ketua Satgas unmasking with audit events, private evidence downloads,
+and psychologist assignment filtering, psychologist-only scheduled sessions
+with encrypted private notes, and Ketua Satgas management of Tim Satgas,
+Psikolog, and Pimpinan accounts. A richer calendar view is not implemented.
+SRS/BPMN source documents were not present in the project during
+implementation; confirm workflow labels and managerial access against those
+documents before operational use.
+
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

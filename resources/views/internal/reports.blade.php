@@ -1,0 +1,6 @@
+@extends('layouts.internal')
+@section('title','Laporan Penanganan')
+@section('heading','Laporan Penanganan')
+@section('content')
+<div class="d-flex justify-content-between align-items-center mb-3"><p class="muted mb-0">Rekap kasus internal tanpa menampilkan identitas pelapor.</p><a href="{{ route('internal.export',request()->query()) }}" class="btn btn-sm btn-outline-success"><i class="bi bi-download me-1"></i>Ekspor CSV</a></div><div class="card"><div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead class="table-light"><tr><th>Tiket</th><th>Kategori</th><th>Status</th><th>Masuk</th><th>Rujukan</th><th>Selesai</th><th>Tindak lanjut</th></tr></thead><tbody>@forelse($reports as $report)<tr><td class="fw-semibold">{{ $report->ticket_number }}</td><td>{{ str_replace('_',' ',$report->incident_type) }}</td><td>{{ str_replace('_',' ',$report->status) }}</td><td>{{ $report->created_at->format('d M Y') }}</td><td>{{ $report->referred_at?->format('d M Y') ?? '—' }}</td><td>{{ $report->resolved_at?->format('d M Y') ?? '—' }}</td><td>{{ $report->requires_follow_up?'Ya':'Tidak' }}</td></tr>@empty<tr><td colspan="7" class="text-center py-4 muted">Belum ada laporan.</td></tr>@endforelse</tbody></table></div><div class="p-3">{{ $reports->links() }}</div></div>
+@endsection
